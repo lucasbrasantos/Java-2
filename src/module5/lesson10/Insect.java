@@ -1,0 +1,52 @@
+package lesson10;
+
+public class Insect {
+    
+    // -- Instance variables
+    private double weight;
+    private int x;
+    private int y;
+
+    private final double DIST_WEIGHT_LOSS_FACTOR = .0001;
+
+    // -- Constructor
+    public Insect(double initWeight, int initX, int initY){
+        weight = initWeight;
+        x = initX;
+        y = initY;
+    }
+
+    public void eat(double amount){
+        System.out.println("Nhum Nhum Whomp Whomp");
+        weight = weight + amount;
+    }
+
+    public void move(int newX, int newY) {
+        double distance = calculateDistance(x, y, newX, newY);
+        if (distance > 0) {
+            x = newX;
+            y = newY;
+            weight = weight * DIST_WEIGHT_LOSS_FACTOR * distance;
+            System.out.printf("Moved %.2f units\n", distance);
+        }else{
+            System.out.println("Staying put");
+        }        
+    }
+
+    private double calculateDistance(double x1, double y1, double x2, double y2) {
+        return Math.sqrt((y2 - y1) * (y2 - y1) + (x2 - x1) * (x2 - x1));
+    }
+
+    // -- Test method
+    public static void main(String[] args) {        
+        // Insect buzz1 = new Insect(); without constructor this is fine because takes the default values
+        // Insect buzz2 = new Insect();
+
+        Insect bug1 = new Insect(20, 30, 10);
+        Insect bug2 = new Insect(10, 20, -20);
+
+        bug1.move(34, 12);
+
+
+    }
+}
