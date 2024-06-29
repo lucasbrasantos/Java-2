@@ -11,5 +11,24 @@ public class InsectClient {
         System.out.println(bug1.getX());
         System.out.println(bug1.getY());
         System.out.println(Insect.getPopulation());
+        System.out.print("\n\n-------------\n\n");
+        
+        System.out.println(bug1.getX());
+        bug1.setX(-20);
+        System.out.println(bug1.getX());
+        bug1.setX(20);
+        System.out.println(bug1.getX());
+        
+        
+        System.out.print("\n\n-------------\n\n");
+        System.out.println("Overloading constructors"); // overloading constructors
+        Insect bug2 = new Insect(10);
+        System.out.println(bug2.getWeight());
+        System.out.println(bug2.getX());
+
+
+        // both work on toString
+        System.out.println("\n\n" + bug2.toString()); 
+        System.out.println(bug2); // calls toString automatically without the need to put
     }
 }

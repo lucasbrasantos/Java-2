@@ -7,6 +7,8 @@ public class Insect {
     private int x;
     private int y;
 
+    public static final int DEFAULT_X = 0;
+    public static final int DEFAULT_Y = 0;
     private static final double DIST_WEIGHT_LOSS_FACTOR = .0001;
     private static int population = 0;
     private static String[] FACTS = {
@@ -15,11 +17,22 @@ public class Insect {
         "Spiders are not considered insects"
     };
 
-    // -- Constructor
-    public Insect(double initWeight, int initX, int initY){
-        weight = initWeight;
-        x = initX;
-        y = initY;
+
+    // -- Constructor 2
+    public Insect(){
+        this(1.0, DEFAULT_X, DEFAULT_Y);
+    }
+    
+    // -- Constructor 2
+    public Insect(double initWeight){ // Overloading constructors
+        this(initWeight, DEFAULT_X, DEFAULT_Y); // Constructor chaining -> this()
+    }   
+
+    // -- Final Constructor
+    public Insect(double weight, int x, int y){
+        this.weight = weight;
+        this.x = x;
+        this.y = y;
         population++;
     }
 
@@ -45,10 +58,15 @@ public class Insect {
 
     public void setX(int newX){
         if (isLegalX(newX)) {
-            x = newX;
+            this.x = x;
         }        
     }
 
+    public void setY(int newY){
+        if (isLegalX(newY)) {
+            this.y = y;
+        }        
+    }
 
     // ------------ //
 
@@ -60,8 +78,14 @@ public class Insect {
         return (newY >= 0 ? true : false);
     }
 
+    // ------------ //
+
+    public String toString(){ // -- toString method
+        return "weight: " + weight + "\nx: " + x + "\ny: " + y;
+    }
 
     // ------------ //
+
 
     public void eat(double amount){
         System.out.println("Nhum Nhum Whomp Whomp");
@@ -89,6 +113,7 @@ public class Insect {
         return FACTS[index];
     }
 
+    // ------------ //
 
     // -- Test method
     public static void main(String[] args) {        
