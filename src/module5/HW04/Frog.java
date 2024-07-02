@@ -8,7 +8,7 @@ public class Frog {
     private boolean isFroglet; // true is 1 < x < 7
     protected static String species;
 
-    private Fly fly;
+    
 
     public static String DEFAULT_SPECIES_NAME = "Rare Pepe";
     public static int DEFAULT_AGE = 5; // 5 months
@@ -32,7 +32,7 @@ public class Frog {
         this.isFroglet = (age > 1 && age < 7);
         this.species = DEFAULT_SPECIES_NAME;
         
-        fly = new Fly();
+        
     }
 
     // Setter / Getter
@@ -71,21 +71,23 @@ public class Frog {
         }
     }
 
-    public void eat(){
+    public void eat(Fly fly){
         if (!fly.isDead()) {
-            if (catchAttempt()) {
+            if (catchAttempt(fly)) {
                 if((this.age*0.5) <= fly.getMass()){
                     this.age += 1;
                 }
                 grow();
                 fly.setMass(0);
+                System.out.println("hmm nhumi");
             }else{
                 fly.grow(1);
+                System.out.println("X - try again");
             }
         }
     }
 
-    private boolean catchAttempt(){
+    private boolean catchAttempt(Fly fly){
         if (this.tongueSpeed > fly.getSpeed()) {
             return true;
         }
@@ -105,8 +107,6 @@ public class Frog {
 
         System.out.println(sp1);
         sp1.grow(25);
-        System.out.println(sp1);
-        sp1.eat();
         System.out.println(sp1);
     }
 
