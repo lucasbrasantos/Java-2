@@ -58,13 +58,13 @@ public class Insect {
 
     public void setX(int newX){
         if (isLegalX(newX)) {
-            this.x = x;
+            this.x = newX;
         }        
     }
 
     public void setY(int newY){
         if (isLegalX(newY)) {
-            this.y = y;
+            this.y = newY;
         }        
     }
 
