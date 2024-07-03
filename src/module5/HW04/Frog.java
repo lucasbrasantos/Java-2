@@ -30,7 +30,7 @@ public class Frog {
         this.age = age;
         this.tongueSpeed = tongueSpeed;
         this.isFroglet = (age > 1 && age < 7);
-        this.species = DEFAULT_SPECIES_NAME;
+        species = DEFAULT_SPECIES_NAME;
         
         
     }
