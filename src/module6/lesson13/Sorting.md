@@ -58,3 +58,89 @@ public class SelectionSort {
     }
 }
 ```
+
+---
+---
+
+# Merge Sort
+
+Merge Sort is an efficient, stable, divide-and-conquer sorting algorithm. It works by dividing the unsorted list into n sublists, each containing one element, then repeatedly merging sublists to produce new sorted sublists until there is only one sublist remaining.
+
+## Steps
+1. **Divide** the unsorted list into n sublists, each containing one element.
+2. **Conquer** by repeatedly merging sublists to produce new sorted sublists.
+3. **Combine** the sorted sublists until there is only one sublist remaining.
+
+## Example
+
+Consider the array `[38, 27, 43, 3, 9, 82, 10]`:
+
+1. Initial array: `[38, 27, 43, 3, 9, 82, 10]`
+2. Divide into sublists:
+    - `[38]` `[27]` `[43]` `[3]` `[9]` `[82]` `[10]`
+3. Merge sublists:
+    - `[27, 38]` `[3, 43]` `[9, 82]` `[10]`
+4. Continue merging:
+    - `[3, 27, 38, 43]` `[9, 10, 82]`
+5. Final merge:
+    - `[3, 9, 10, 27, 38, 43, 82]`
+
+![merge sort image](./imgs/mergeSort.png)
+*The image above illustrates the divide and conquer approach of Merge Sort.*
+
+![merge sort gif](./imgs/Merge-sort-example-300px.gif)
+*The gif demonstrates the Merge Sort algorithm in action.*
+
+## Code Example
+
+```java
+public class MergeSort {
+
+    public static void mergeSort(int[] arr) {
+        if (arr.length < 2) {
+            return;
+        }
+        int mid = arr.length / 2;
+        int[] left = new int[mid];
+        int[] right = new int[arr.length - mid];
+
+        for (int i = 0; i < mid; i++) {
+            left[i] = arr[i];
+        }
+        for (int i = mid; i < arr.length; i++) {
+            right[i - mid] = arr[i];
+        }
+
+        mergeSort(left);
+        mergeSort(right);
+
+        merge(arr, left, right);
+    }
+
+    private static void merge(int[] arr, int[] left, int[] right) {
+        int i = 0, j = 0, k = 0;
+        while (i < left.length && j < right.length) {
+            if (left[i] <= right[j]) {
+                arr[k++] = left[i++];
+            } else {
+                arr[k++] = right[j++];
+            }
+        }
+        while (i < left.length) {
+            arr[k++] = left[i++];
+        }
+        while (j < right.length) {
+            arr[k++] = right[j++];
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {38, 27, 43, 3, 9, 82, 10};
+        mergeSort(arr);
+        System.out.println("Sorted array: ");
+        for (int i : arr) {
+            System.out.print(i + " ");
+        }
+    }
+}
+```
