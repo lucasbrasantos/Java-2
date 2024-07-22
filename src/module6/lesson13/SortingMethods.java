@@ -40,9 +40,12 @@ public class SortingMethods {
                     }                
                 }
 
-                nextSmallest = list[minIndex];
-                list[minIndex] = list[unSortedStart];
-                list[unSortedStart] = nextSmallest;
+                
+                if (minIndex != unSortedStart) {
+                    nextSmallest = list[minIndex];
+                    list[minIndex] = list[unSortedStart];
+                    list[unSortedStart] = nextSmallest;
+                }
                 
             }
 

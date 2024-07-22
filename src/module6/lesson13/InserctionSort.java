@@ -6,7 +6,6 @@ public class InserctionSort {
         int[] arr = {2, 3, 1, 5, 4, 0, 9, 6, 7, 8};
 
         insertionSort2(arr);
-        printArr(arr);
     }
 
     public static void printArr(int[] arr) {
