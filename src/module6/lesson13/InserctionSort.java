@@ -28,7 +28,7 @@ public class InserctionSort {
                 currentIndex--;
                 System.out.println("after shifting: " + currentIndex);        
             }            
-            
+             
             System.out.println();
             arr[currentIndex+1] = nextInsert;
 
